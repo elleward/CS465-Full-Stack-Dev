@@ -1,0 +1,6 @@
+$kind: collection
+name: 'Travlr Implemented Routes'
+description: 'Collection generated from implemented Express routes discovered in the selected project.'
+variables:
+  - key: base_url
+    value: 'http://localhost:3000'
