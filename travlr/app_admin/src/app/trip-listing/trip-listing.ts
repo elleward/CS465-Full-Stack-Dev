@@ -1,5 +1,6 @@
 import { Component, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 import { TripCard } from '../trip-card/trip-card';
 
 import { Trip } from '../models/trip';
@@ -19,8 +20,12 @@ export class TripListing implements OnInit {
   trips = signal<Trip[]>([]);
   message = signal<string>('');
 
-  constructor(private tripDataService: TripData) {
+  constructor(private tripDataService: TripData, private router: Router) {
     console.log('trip-listing constructor');
+  }
+
+  public addTrip(): void {
+    this.router.navigate(['/add-trip']);
   }
 
   ngOnInit(): void {
@@ -38,7 +43,7 @@ export class TripListing implements OnInit {
           } else {
             this.message.set('There were no trips retrieved from the database');
           }
-          console.log(this.message);
+          console.log(this.message());
         },
         error: (error: any) => {
           console.log('Error: ' + error);
